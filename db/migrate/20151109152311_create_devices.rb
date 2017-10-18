@@ -1,6 +1,6 @@
-class CreateSensors < ActiveRecord::Migration
+class CreateDevices < ActiveRecord::Migration
   def change
-    create_table :sensors do |t|
+    create_table :devices do |t|
       t.string :name
       t.text :description
       t.integer :kind
