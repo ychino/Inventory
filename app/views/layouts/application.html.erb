@@ -16,19 +16,8 @@
   </div>
 
   <div id="page-wrapper">
-    <%= render 'layouts/title' %>
     <%= render 'layouts/messages' %>
-
-    <div>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <%= content_for?(:panel_heading) ? yield(:panel_heading) : "Dashboard" %>
-        </div>
-        <div class="panel-body">
-          <%= yield %>
-        </div>
-      </div>
-    </div>
+    <%= yield %>
   </div>
 </body>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>

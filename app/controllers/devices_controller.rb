@@ -5,6 +5,11 @@ class DevicesController < ApplicationController
   # GET /sensors.json
   def index
     @devices = Device.all
+    respond_to do |format|
+       format.html
+       format.json {render :json => @devices}
+       format.xml  {render :xml => @devices}
+    end
   end
 
   # GET /sensors/1
@@ -69,6 +74,6 @@ class DevicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def device_params
-      params.require(:device).permit(:name, :description, :kind)
+      params.require(:device).permit(:name, :description, :kind, :status, :builtby, :requestedby, :model)
     end
 end

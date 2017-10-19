@@ -1,35 +1,43 @@
-<% content_for(:page_header) do %>
-  <%= "Device detail" %>
-<% end %>
-<% content_for :panel_heading do %><%= @device.name %><% end %>
-
-<p>
-  <strong>Name:</strong>
-  <%= @device.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @device.description %>
-</p>
-
-<p>
-  <strong>Kind:</strong>
-  <%= Device::KINDS[@device.kind][0] %>
-</p>
-
-<% unless @devices.blank? %>
-  <div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        Device Evolution
+<div class="row"><h1>Devices</h1></div>
+<div class="panel panel-default">
+    <div class="panel-heading">Dashboard</div>
+  <div class="panel-body">
+    <% content_for(:page_header) do %>
+      <%= "Device detail" %>
+    <% end %>
+    <% content_for :panel_heading do %><%= @device.name %><% end %>
+    
+    <p>
+      <strong>Name:</strong>
+      <%= @device.name %>
+    </p>
+    
+    <p>
+      <strong>Description:</strong>
+      <%= @device.description %>
+    </p>
+    
+    <p>
+      <strong>Kind:</strong>
+      <%= @device.kind %>
+    </p>
+    
+    <%= link_to 'Edit', edit_device_path(@device), class: 'btn btn-primary' %>
+    <%= link_to 'Destroy', @device, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+    
+    <% unless @devices.blank? %>
+      <div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Device Evolution
+          </div>
+          <div class="panel-body">
+            <div id="device-evolution" style="height: 250px;"></div>
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-        <div id="device-evolution" style="height: 250px;"></div>
-      </div>
-    </div>
   </div>
-
+</div>  
   <% content_for(:extra_scripts) do %>
     <script type="text/javascript">
       $(document).ready(function (){

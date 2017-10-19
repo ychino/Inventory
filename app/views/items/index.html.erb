@@ -1,0 +1,40 @@
+<div class="row"><h1>Items</h1></div>
+<div class="panel panel-default">
+    <div class="panel-heading">Items <%= link_to 'Add New Item', new_item_path(), class: 'btn btn-default btn-sm' %></div>
+  <div class="panel-body">
+    <% content_for(:page_header) do %>
+      <%= "Items" %>
+    <% end %>
+    <% content_for :panel_heading do %>Content  <%= link_to 'Add New Item', new_item_path(), class: 'btn btn-default btn-sm' %><% end %>
+    
+    <p id="notice"><%= notice %></p>
+    
+    <table id="items" class="table-striped table-bordered table table-hover" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th>Item Name</th>
+          <th>Volume</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <% @items.each do |item| %>
+          <tr>
+            <td class="col-md-3"><%= link_to item.name, item %></td>
+            <td class="col-md-3"><%= item.volume %></td>
+            <td class="col-md-6"><%= item.notes %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+    <% content_for(:extra_scripts) do %>
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $('#items').DataTable({ responsive: true });
+        });
+      </script>
+    <% end %>

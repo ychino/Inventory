@@ -11,17 +11,34 @@
     </div>
   <% end %>
 
+
   <div class="form-group">
-    <%= f.label :name %><br>
+    <%= f.label :Service %><br>
+    <%= f.select :kind, Device::KINDS, { prompt: 'Select a service' }, { required: true, class: 'form-control' } %>
+  </div>
+  <div class="form-group">
+    <%= f.label :AssetTag %><br>
     <%= f.text_field :name, class: 'form-control', placeholder: 'Enter device name...', required: true %>
   </div>
   <div class="form-group">
-    <%= f.label :description %><br>
-    <%= f.text_area :description, class: 'form-control', placeholder: 'Enter device description...', required: true %>
+    <%= f.label :Model %><br>
+    <%= f.select :model, Device::MODELS, { prompt: 'Select a model' }, { required: true, class: 'form-control' } %>
   </div>
   <div class="form-group">
-    <%= f.label :kind %><br>
-    <%= f.select :kind, Device::KINDS, { prompt: 'Select a kind' }, { required: true, class: 'form-control' } %>
+    <%= f.label :Builtby %><br>
+    <%= f.text_field :builtby, class: 'form-control', placeholder: 'Enter date built...', required: false %>
+  </div>
+  <div class="form-group">
+    <%= f.label :Status %><br>
+    <%= f.select :status, Device::STATUSES, { prompt: 'Select a status' }, { required: true, class: 'form-control' } %>
+  </div>
+  <div class="form-group">
+    <%= f.label :Requestedby %><br>
+    <%= f.text_area :requestedby, class: 'form-control', placeholder: 'Enter requster...', required: false %>
+  </div>
+  <div class="form-group">
+    <%= f.label :Notes %><br>
+    <%= f.text_area :description, class: 'form-control', placeholder: 'Enter device description...', required: false %>
   </div>
   <div class="form-group actions">
     <%= f.submit 'Submit', :class => 'btn btn-lg btn-success btn-block' %>

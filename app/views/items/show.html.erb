@@ -1,0 +1,23 @@
+<div class="row"><h1>Items</h1></div>
+<div class="panel panel-default">
+    <div class="panel-heading">Items</div>
+  <div class="panel-body">
+    <p>
+      <strong>Name:</strong>
+      <%= @item.name %>
+    </p>
+    
+    <p>
+      <strong>Volume:</strong>
+      <%= @item.volume %>
+    </p>
+    
+    <p>
+      <strong>Notes:</strong>
+      <%= @item.notes %>
+    </p>
+    
+    <%= link_to 'Edit', edit_item_path(@item), class: 'btn btn-primary' %>
+    <%= link_to 'Destroy', @item, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+  </div>
+</div>

@@ -1,6 +1,12 @@
-<% content_for(:page_header) do %>
-  <%= "Create new device" %>
-<% end %>
-<% content_for :panel_heading do %>Content<% end %>
-
-<%= render 'form' %>
+<div class="row"><h1>Devices</h1></div>
+<div class="panel panel-default">
+    <div class="panel-heading">Dashboard</div>
+  <div class="panel-body">
+    <% content_for(:page_header) do %>
+      <%= "Create new device" %>
+    <% end %>
+    <% content_for :panel_heading do %>Content<% end %>
+    
+    <%= render 'form' %>
+  </div>
+</div>
