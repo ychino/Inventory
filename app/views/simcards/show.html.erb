@@ -1,0 +1,48 @@
+<div class="row"><h1>SIM Cards</h1></div>
+<div class="panel panel-default">
+    <div class="panel-heading">Dashboard</div>
+  <div class="panel-body">
+    <% content_for(:page_header) do %>
+      <%= "SIM card detail" %>
+    <% end %>
+    <% content_for :panel_heading do %><%= @simcard.phonenumber %><% end %>
+    
+    <p>
+      <strong>Project:</strong>
+      <%= @simcard.project %>
+    </p>  
+    <p>
+      <strong>Start Date:</strong>
+      <%= @simcard.startdate %>
+    </p>
+    <p>
+      <strong>Carrier:</strong>
+      <%= @simcard.carrier %>
+    </p>
+    <p>
+      <strong>Phone Number:</strong>
+      <%= @simcard.phonenumber %>
+    </p>
+    <p>
+      <strong>Device ID:</strong>
+      <%= @simcard.deviceid %>
+    </p>
+    <p>
+      <strong>Monthly Fee (JPY)</strong>
+      <%= @simcard.monthlyfee %>
+    </p>
+    <p>
+      <strong>Status:</strong>
+        <% if @simcard.status == "Active" %>
+          <%= link_to @simcard.status, '#', class: "label label-success" %>
+        <% end %>
+        <% if @simcard.status == "Non Active" %>
+          <%= link_to @simcard.status, '#', class: 'label label-warning' %>
+        <% end %>
+     </p>
+    <p>
+    
+    </br>
+  
+    <%= link_to 'Edit', edit_simcard_path(@simcard), class: 'btn btn-primary' %>
+    <%= link_to 'Destroy', @simcard, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>

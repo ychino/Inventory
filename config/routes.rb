@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  root to: 'dashboard#index'
+  resources :simcards
   resources :otherdevices
   resources :eprodevices
-  root to: 'dashboard#index'
   resources :items
   resources :devices
   devise_for :users, only: :session, path: 'session',

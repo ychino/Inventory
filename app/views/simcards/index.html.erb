@@ -1,0 +1,49 @@
+<div class="row"><h1>SIM Cards</h1></h1></div>
+<div class="panel panel-default">
+    <div class="panel-heading">Dashboard <%= link_to 'Add New SIM card', new_simcard_path(), class: 'btn btn-default btn-sm' %></div>
+  <div class="panel-body">
+    <table id="simcards" class="table-striped table-bordered table table-hover" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th>Project</th>
+          <th>Start Date</th>
+          <th>Carrier</th>
+          <th>Phone Number</th>
+          <th>Device ID</th>
+          <th>Monthly Fee (JPY)</th>
+          <th>Last Updated</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <% @simcards.each do |simcard| %>
+          <tr>
+            <td><%= simcard.project %></td>
+            <td><%= simcard.startdate %></td>
+            <td><%= simcard.carrier %></td>
+            <td><%= link_to simcard.phonenumber, simcard %></td>
+            <td><%= simcard.deviceid %></td>
+            <td><%= simcard.monthlyfee %></td>
+            <td><%= simcard.updated_at %></td>
+            <td class="text-left">
+              <% if simcard.status == "Active" %>
+                 <%= link_to simcard.status, '#', class: "label label-success" %>
+              <% end %>
+              <% if simcard.status == "Non Active" %>
+                <%= link_to simcard.status, '#', class: 'label label-warning' %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  
+<% content_for(:extra_scripts) do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#simcards').DataTable({ responsive: true });
+    });
+  </script>
+<% end %>
