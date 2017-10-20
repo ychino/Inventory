@@ -15,6 +15,7 @@ gem 'pg'
 gem 'thin'
 gem 'seed_dump'
 gem 'bootstrap_sb_admin_base_v2'
+gem "chartkick"
 
 group :development, :test do
   gem 'byebug'

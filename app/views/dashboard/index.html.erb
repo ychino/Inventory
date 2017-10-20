@@ -1,9 +1,21 @@
-<h1>Total - <%= @devices.count %></h1>
-<h1>RS Total - <%= @rsdevices.count %></h1>
-<h1>ePRO Total- <%= @eprodevices.count %></h1>
-<h1>Other Total - <%= @otherdevices.count %></h1>
+<div class="row">
+    <div class="col-md-12">
+        <h2>Total - <%= @devices.count %></h2>
+        <%= pie_chart ({ "RS": @rsdevices.count, "ePRO": @eprodevices.count, "Other": @otherdevices.count }),  width: "700px", height: "400px", colors: ["#696969", "#C0C0C0", "#F5F5F5"] %>
+    </div>
+</div>
 
-<h3>RS Build Requested - <%= @rsrequesteddevices.count %></h3>
-<h3>RS In field- <%= @rsinfielddevices.count %></h3>
-<h3>RS Stocked - <%= @rsstockeddevices.count %></h3>
-<h3>RS Repair Needed- <%= @rsrepairneededdevices.count %></h3>
+<div class="row">
+    <div class="col-md-4">
+        <h3>RS Total - <%= @rsdevices.count %></h3>
+        <%= pie_chart ({ "Build Requested": @rsrequesteddevices.count, "In Field": @rsinfielddevices.count, "Stocked": @rsstockeddevices.count, "Repair Needed": @rsrepairneededdevices.count }), colors: ["Orange", "Green", "Blue", "Red"]  %>
+    </div>
+    <div class="col-md-4">
+        <h3>ePRO Total - <%= @rsdevices.count %></h3>
+        <%= pie_chart ({ "Build Requested": @rsdevices.count, "In Field": @eprodevices.count, "Stocked": @otherdevices.count, "Repair Needed": @rsrepairneededdevices.count }) %>
+    </div>
+    <div class="col-md-4">
+        <h3>Other Total - <%= @rsdevices.count %></h3>
+        <%= pie_chart ({ "Build Requested": @rsdevices.count, "In Field": @eprodevices.count, "Stocked": @otherdevices.count, "Repair Needed": @rsrepairneededdevices.count }) %>
+    </div>
+</div>
