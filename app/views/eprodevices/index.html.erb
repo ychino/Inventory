@@ -1,0 +1,53 @@
+<div class="row"><h1>ePRO Devices</h1></div>
+<div class="panel panel-default">
+    <div class="panel-heading">Dashboard <%= link_to 'Add New ePRO Device', new_eprodevice_path(), class: 'btn btn-default btn-sm' %></div>
+  <div class="panel-body">
+    <table id="eprodevices" class="table-striped table-bordered table table-hover" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+         <th>Service</th>
+         <th>Assettag</th>
+         <th>Model</th>
+         <th>Project</th>
+         <th>Requestedby</th>
+         <th>Buildby</th>
+         <th>Status</th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <% @eprodevices.each do |eprodevice| %>
+          <tr>
+            <td><%= eprodevice.service %></td>
+            <td><%= link_to eprodevice.assettag, eprodevice %></td>
+            <td><%= eprodevice.model %></td>
+            <td><%= eprodevice.project %></td>
+            <td><%= eprodevice.requestedby %></td>
+            <td><%= eprodevice.buildby %></td>
+            <td class="text-left">
+              <% if eprodevice.status == "Build Requested" %>
+                 <%= link_to eprodevice.status, '#', class: "label label-warning" %>
+              <% end %>
+              <% if eprodevice.status == "In Field" %>
+                <%= link_to eprodevice.status, '#', class: 'label label-success' %>
+              <% end %>
+              <% if eprodevice.status == "Stocked" %>
+                <%= link_to eprodevice.status, '#', class: 'label label-primary' %>
+              <% end %>
+              <% if eprodevice.status == "Repair Needed" %>
+                <%= link_to eprodevice.status, '#', class: 'label label-danger' %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  
+<% content_for(:extra_scripts) do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#eprodevices').DataTable({ responsive: true });
+    });
+  </script>
+<% end %>

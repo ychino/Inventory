@@ -1,0 +1,53 @@
+<div class="row"><h1>Other Devices</h1></div>
+<div class="panel panel-default">
+    <div class="panel-heading">Dashboard <%= link_to 'Add New Other Device', new_otherdevice_path(), class: 'btn btn-default btn-sm' %></div>
+  <div class="panel-body">
+    <table id="otherdevices" class="table-striped table-bordered table table-hover" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+         <th>Service</th>
+         <th>Assettag</th>
+         <th>Model</th>
+         <th>Project</th>
+         <th>Requestedby</th>
+         <th>Buildby</th>
+         <th>Status</th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <% @otherdevices.each do |otherdevice| %>
+          <tr>
+            <td><%= otherdevice.service %></td>
+            <td><%= link_to otherdevice.assettag, otherdevice %></td>
+            <td><%= otherdevice.model %></td>
+            <td><%= otherdevice.project %></td>
+            <td><%= otherdevice.requestedby %></td>
+            <td><%= otherdevice.buildby %></td>
+            <td class="text-left">
+              <% if otherdevice.status == "Build Requested" %>
+                 <%= link_to otherdevice.status, '#', class: "label label-warning" %>
+              <% end %>
+              <% if otherdevice.status == "In Field" %>
+                <%= link_to otherdevice.status, '#', class: 'label label-success' %>
+              <% end %>
+              <% if otherdevice.status == "Stocked" %>
+                <%= link_to otherdevice.status, '#', class: 'label label-primary' %>
+              <% end %>
+              <% if otherdevice.status == "Repair Needed" %>
+                <%= link_to otherdevice.status, '#', class: 'label label-danger' %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  
+<% content_for(:extra_scripts) do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#otherdevices').DataTable({ responsive: true });
+    });
+  </script>
+<% end %>

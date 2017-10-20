@@ -1,0 +1,24 @@
+<%= link_to 'Edit', edit_eprodevice_path(@eprodevice) %> |
+<%= link_to 'Back', eprodevices_path %>
+
+<div class="row"><h1>Epro Devices</h1></div>
+<div class="panel panel-default">
+    <div class="panel-heading">Dashboard</div>
+  <div class="panel-body">
+    <% content_for(:page_header) do %>
+      <%= "ePRO Device detail" %>
+    <% end %>
+    <% content_for :panel_heading do %><%= @eprodevice.assettag %><% end %>
+    
+    <p>
+      <strong>Name:</strong>
+      <%= @eprodevice.assettag %>
+    </p>
+    
+    <p>
+      <strong>Kind:</strong>
+      <%= @eprodevice.model %>
+    </p>
+    
+<%= link_to 'Edit', edit_eprodevice_path(@eprodevice), class: 'btn btn-primary' %>
+<%= link_to 'Destroy', @eprodevice, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :otherdevices
+  resources :eprodevices
   root to: 'dashboard#index'
   resources :items
   resources :devices

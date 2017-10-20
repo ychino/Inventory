@@ -1,0 +1,2 @@
+module EprodevicesHelper
+end

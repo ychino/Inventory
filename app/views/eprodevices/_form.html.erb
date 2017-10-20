@@ -1,0 +1,51 @@
+<%= form_for(@eprodevice) do |f| %>
+  <% if @eprodevice.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(@eprodevice.errors.count, "error") %> prohibited this device from being saved:</h3>
+
+      <ul>
+      <% @eprodevice.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="form-group">
+    <%= f.label :Service %><br>
+    <%= f.select :service, Eprodevice::KINDS, { prompt: 'Select a service' }, { required: true, class: 'form-control' } %>
+  </div>
+  <div class="form-group">
+    <%= f.label :AssetTag %><br>
+    <%= f.text_field :assettag, class: 'form-control', placeholder: 'Enter device name...', required: true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :Model %><br>
+    <%= f.select :model, Eprodevice::MODELS, { prompt: 'Select a model' }, { required: true, class: 'form-control' } %>
+  </div>
+   <div class="form-group">
+    <%= f.label :Project %><br>
+    <%= f.text_field :project, class: 'form-control', placeholder: 'Enter project name...', required: false %>
+  </div>
+ 
+  <div class="form-group">
+    <%= f.label :Buildby %><br>
+    <%= f.text_field :buildby, class: 'form-control', placeholder: 'Enter date built...', required: false %>
+  </div>
+  <div class="form-group">
+    <%= f.label :Requestedby %><br>
+    <%= f.text_field :requestedby, class: 'form-control', placeholder: 'Enter requster...', required: false %>
+  </div>
+  <div class="form-group">
+    <%= f.label :Status %><br>
+    <%= f.select :status, Eprodevice::STATUSES, { prompt: 'Select a status' }, { required: true, class: 'form-control' } %>
+  </div>
+  <div class="form-group">
+    <%= f.label :Notes %><br>
+    <%= f.text_area :notes, class: 'form-control', placeholder: 'Enter device description...', required: false %>
+  </div>
+  <div class="form-group actions">
+    <%= f.submit 'Submit', :class => 'btn btn-lg btn-success btn-block' %>
+  </div>
+<% end %>
