@@ -25,6 +25,10 @@
     <%= f.select :model, Device::MODELS, { prompt: 'Select a model' }, { required: true, class: 'form-control' } %>
   </div>
   <div class="form-group">
+    <%= f.label :Sponsorid %><br>
+    <%= f.text_field :siteid, class: 'form-control', placeholder: 'Enter site id...', required: false %>
+  </div>
+  <div class="form-group">
     <%= f.label :Builtby %><br>
     <%= f.text_field :builtby, class: 'form-control', placeholder: 'Enter date built...', required: false %>
   </div>
@@ -33,8 +37,12 @@
     <%= f.select :status, Device::STATUSES, { prompt: 'Select a status' }, { required: true, class: 'form-control' } %>
   </div>
   <div class="form-group">
+    <%= f.label :Stockedfor %><br>
+    <%= f.text_field :stockedfor, class: 'form-control', placeholder: 'Enter date built...', required: false %>
+  </div>
+  <div class="form-group">
     <%= f.label :Requestedby %><br>
-    <%= f.text_area :requestedby, class: 'form-control', placeholder: 'Enter requster...', required: false %>
+    <%= f.text_field :requestedby, class: 'form-control', placeholder: 'Enter requster...', required: false %>
   </div>
   <div class="form-group">
     <%= f.label :Notes %><br>

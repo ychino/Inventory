@@ -8,22 +8,59 @@
     <% content_for :panel_heading do %><%= @device.name %><% end %>
     
     <p>
+      <strong>Kind:</strong>
+      <%= @device.kind %>
+    </p>  
+    <p>
       <strong>Name:</strong>
       <%= @device.name %>
     </p>
-    
     <p>
-      <strong>Description:</strong>
+      <strong>Model:</strong>
+      <%= @device.model %>
+    </p>
+    <p>
+      <strong>Sponsor Site ID:</strong>
+      <%= @device.siteid %>
+    </p>
+    <p>
+      <strong>Requested by:</strong>
+      <%= @device.requestedby %>
+    </p>
+    <p>
+      <strong>Built By:</strong>
+      <%= @device.builtby %>
+    </p>
+    <p>
+      <strong>Status:</strong>
+      <% if @device.status == "Build Requested" %>
+        <%= link_to @device.status, '#', class: "label label-warning" %>
+      <% end %>
+        <% if @device.status == "In Field" %>
+      <%= link_to @device.status, '#', class: 'label label-success' %>
+        <% end %>
+      <% if @device.status == "Stocked" %>
+        <%= link_to @device.status + "  " + @device.stockedfor, '#', class: 'label label-primary' %>
+      <% end %>
+      <% if @device.status == "Repair Needed" %>
+        <%= link_to @device.status, '#', class: 'label label-danger' %>
+      <% end %>
+     </p>
+    <p>
+      <strong>Last Updated at:</strong>
+      <%= @device.updated_at %>
+    </p>
+       
+    <p>
+      <strong>Notes:</strong>
       <%= @device.description %>
     </p>
-    
-    <p>
-      <strong>Kind:</strong>
-      <%= @device.kind %>
-    </p>
-    
+    </br>
+  
     <%= link_to 'Edit', edit_device_path(@device), class: 'btn btn-primary' %>
     <%= link_to 'Destroy', @device, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+    
+    
     
     <% unless @devices.blank? %>
       <div>
