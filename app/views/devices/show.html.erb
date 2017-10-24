@@ -10,9 +10,13 @@
     <p>
       <strong>Kind:</strong>
       <%= @device.kind %>
+    </p> 
+    <p>
+      <strong>Project:</strong>
+      <%= @device.project %>
     </p>  
     <p>
-      <strong>Name:</strong>
+      <strong>Asset Tag:</strong>
       <%= @device.name %>
     </p>
     <p>
@@ -40,7 +44,7 @@
       <%= link_to @device.status, '#', class: 'label label-success' %>
         <% end %>
       <% if @device.status == "Stocked" %>
-        <%= link_to @device.status + "  " + @device.stockedfor, '#', class: 'label label-primary' %>
+        <%= link_to @device.status, '#', class: 'label label-primary' %>
       <% end %>
       <% if @device.status == "Repair Needed" %>
         <%= link_to @device.status, '#', class: 'label label-danger' %>

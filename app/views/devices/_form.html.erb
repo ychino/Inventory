@@ -16,6 +16,10 @@
     <%= f.label :Service %><br>
     <%= f.select :kind, Device::KINDS, { prompt: 'Select a service' }, { required: true, class: 'form-control' } %>
   </div>
+   <div class="form-group">
+    <%= f.label :Project %><br>
+    <%= f.text_field :project, class: 'form-control', placeholder: 'Enter device name...', required: true %>
+  </div>
   <div class="form-group">
     <%= f.label :AssetTag %><br>
     <%= f.text_field :name, class: 'form-control', placeholder: 'Enter device name...', required: true %>
@@ -29,16 +33,12 @@
     <%= f.text_field :siteid, class: 'form-control', placeholder: 'Enter site id...', required: false %>
   </div>
   <div class="form-group">
-    <%= f.label :Builtby %><br>
+    <%= f.label :BuiltDateBy %><br>
     <%= f.text_field :builtby, class: 'form-control', placeholder: 'Enter date built...', required: false %>
   </div>
   <div class="form-group">
     <%= f.label :Status %><br>
     <%= f.select :status, Device::STATUSES, { prompt: 'Select a status' }, { required: true, class: 'form-control' } %>
-  </div>
-  <div class="form-group">
-    <%= f.label :Stockedfor %><br>
-    <%= f.text_field :stockedfor, class: 'form-control', placeholder: 'Enter date built...', required: false %>
   </div>
   <div class="form-group">
     <%= f.label :Requestedby %><br>

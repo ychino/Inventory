@@ -6,6 +6,7 @@
       <thead>
         <tr>
           <th>Service</th>
+          <th>Project</th>
           <th>Asset Tag</th>
           <th>Model</th>
           <th>Site ID</th>
@@ -20,6 +21,7 @@
         <% @devices.each do |device| %>
           <tr>
             <td><%= device.kind %></td>
+            <td><%= device.project %></td>
             <td><%= link_to device.name, device %></td>
             <td><%= device.model %></td>
             <td><%= device.siteid %></td>
@@ -34,7 +36,7 @@
                 <%= link_to device.status, '#', class: 'label label-success' %>
               <% end %>
               <% if device.status == "Stocked" %>
-                <%= link_to device.status + "  " + device.stockedfor, '#', class: 'label label-primary' %>
+                <%= link_to device.status, '#', class: 'label label-primary' %>
               <% end %>
               <% if device.status == "Repair Needed" %>
                 <%= link_to device.status, '#', class: 'label label-danger' %>
