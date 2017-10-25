@@ -56,7 +56,11 @@
 <% content_for(:extra_scripts) do %>
   <script type="text/javascript">
     $(document).ready(function() {
-      $('#devices').DataTable({ responsive: true });
+      $('#devices').DataTable({ 
+        responsive: true,
+        "aLengthMenu": [[25, 50, 75, -1], [25, 50, 75, "All"]],
+        "iDisplayLength": 25
+      });
     });
   </script>
 <% end %>
