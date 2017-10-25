@@ -25,7 +25,7 @@
             <td><%= link_to simcard.phonenumber, simcard %></td>
             <td><%= simcard.deviceid %></td>
             <td><%= simcard.monthlyfee %></td>
-            <td><%= simcard.updated_at %></td>
+            <td><%= simcard.updated_at.strftime('%Y-%m-%d') %></td>
             <td class="text-left">
               <% if simcard.status == "Active" %>
                  <%= link_to simcard.status, '#', class: "label label-success" %>

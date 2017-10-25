@@ -9,6 +9,9 @@ class DevicesController < ApplicationController
        format.html
        format.json {render :json => @devices}
        format.xml  {render :xml => @devices}
+       format.csv do
+         send_data render_to_string, filename: "devices.csv", type: :csv
+       end
     end
   end
 
@@ -65,7 +68,12 @@ class DevicesController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
+  def import
+    Device.import(params[:file])
+    redirect_to devices_url, notice: 'Devices have been imported!'
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_device

@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :otherdevices
   resources :eprodevices
   resources :items
-  resources :devices
+  resources :devices do
+    collection { post :import }
+  end
   devise_for :users, only: :session, path: 'session',
              path_names: { sign_in: 'login', sign_out: 'logout' }
   resources :users, only: [:show]

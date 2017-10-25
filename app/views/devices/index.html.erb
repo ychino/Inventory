@@ -27,7 +27,7 @@
             <td><%= device.siteid %></td>
             <td><%= device.requestedby %></td>
             <td><%= device.builtby %></td>
-            <td><%= device.updated_at %></td>
+            <td><%= device.updated_at.strftime('%Y-%m-%d') %></td>
             <td class="text-left">
               <% if device.status == "Build Requested" %>
                  <%= link_to device.status, '#', class: "label label-warning" %>
@@ -46,7 +46,12 @@
         <% end %>
       </tbody>
     </table>
-  </div>
+    <p><%= link_to "Export CSV", devices_path(format: :csv), class: "btn btn-primary" %></p>
+    
+    <%= form_tag({controller: "devices", action: "import", method: "post"}, {multipart: true}) do %>
+      <p><%= file_field_tag :file %></p>
+      <%= submit_tag "Import CSV", class: "btn btn-primary" %>
+    <% end %>
   
 <% content_for(:extra_scripts) do %>
   <script type="text/javascript">
