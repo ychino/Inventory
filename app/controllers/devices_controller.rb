@@ -70,8 +70,12 @@ class DevicesController < ApplicationController
   end
   
   def import
-    Device.import(params[:file])
-    redirect_to devices_url, notice: 'Devices have been imported!'
+    if params[:file].blank?
+      redirect_to devices_url, notice: 'Please select a file!'
+    else
+      Device.import(params[:file])
+      redirect_to devices_url, notice: 'Devices have been imported!'
+    end
   end
   
   private

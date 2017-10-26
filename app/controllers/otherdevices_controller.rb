@@ -69,6 +69,6 @@ class OtherdevicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def otherdevice_params
-      params.require(:otherdevice).permit(:service, :assettag, :project, :model, :requestedby, :buildby, :notes, :status)
+      params.require(:otherdevice).permit(:service, :assettag, :project, :model, :requestedby, :buildby, :notes, :status, :assettag)
     end
 end

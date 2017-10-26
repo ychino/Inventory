@@ -69,6 +69,6 @@ class EprodevicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def eprodevice_params
-      params.require(:eprodevice).permit(:service, :assettag, :project, :model, :requestedby, :buildby, :notes, :status)
+      params.require(:eprodevice).permit(:service, :assettag, :project, :model, :requestedby, :buildby, :notes, :status, :siteid)
     end
 end

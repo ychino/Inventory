@@ -14,16 +14,22 @@
         <tr>
           <th>Item Name</th>
           <th>Volume</th>
+          <th>Model</th>
+          <th>Manufacturer</th>
           <th>Notes</th>
+          <th>Last Updated</th>
         </tr>
       </thead>
     
       <tbody>
         <% @items.each do |item| %>
           <tr>
-            <td class="col-md-3"><%= link_to item.name, item %></td>
-            <td class="col-md-3"><%= item.volume %></td>
-            <td class="col-md-6"><%= item.notes %></td>
+            <td><%= link_to item.name, item %></td>
+            <td><%= item.volume %></td>
+            <td><%= item.model %></td>
+            <td><%= item.manufacturer %></td>
+            <td><%= item.notes %></td>
+            <td><%= item.updated_at.strftime('%Y-%m-%d') %></td>
           </tr>
         <% end %>
       </tbody>

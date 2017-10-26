@@ -6,11 +6,13 @@
       <thead>
         <tr>
          <th>Service</th>
-         <th>Assettag</th>
-         <th>Model</th>
          <th>Project</th>
-         <th>Requestedby</th>
-         <th>Buildby</th>
+         <th>Asset Tag</th>
+         <th>Model</th>
+         <th>Site ID</th>
+         <th>Requested By</th>
+         <th>Build Date</th>
+         <th>Last Updated</th>
          <th>Status</th>
         </tr>
       </thead>
@@ -19,11 +21,13 @@
         <% @otherdevices.each do |otherdevice| %>
           <tr>
             <td><%= otherdevice.service %></td>
+            <td><%= otherdevice.project %></td>
             <td><%= link_to otherdevice.assettag, otherdevice %></td>
             <td><%= otherdevice.model %></td>
-            <td><%= otherdevice.project %></td>
+            <td><%= otherdevice.siteid %></td>
             <td><%= otherdevice.requestedby %></td>
             <td><%= otherdevice.buildby %></td>
+            <td><%= otherdevice.updated_at.strftime('%Y-%m-%d') %></td>
             <td class="text-left">
               <% if otherdevice.status == "Build Requested" %>
                  <%= link_to otherdevice.status, '#', class: "label label-warning" %>

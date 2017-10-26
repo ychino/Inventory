@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171024075823) do
+ActiveRecord::Schema.define(version: 20171026053428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20171024075823) do
     t.string   "project"
   end
 
+  add_index "devices", ["name"], name: "index_devices_on_name", unique: true, using: :btree
+
   create_table "eprodevices", force: :cascade do |t|
     t.string   "service",     null: false
     t.string   "assettag",    null: false
@@ -41,14 +43,19 @@ ActiveRecord::Schema.define(version: 20171024075823) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "status"
+    t.integer  "siteid"
   end
 
+  add_index "eprodevices", ["assettag"], name: "index_eprodevices_on_assettag", unique: true, using: :btree
+
   create_table "items", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.integer  "volume",     null: false
+    t.string   "name",         null: false
+    t.integer  "volume",       null: false
     t.text     "notes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "model"
+    t.string   "manufacturer"
   end
 
   create_table "otherdevices", force: :cascade do |t|
@@ -62,7 +69,10 @@ ActiveRecord::Schema.define(version: 20171024075823) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "status"
+    t.integer  "siteid"
   end
+
+  add_index "otherdevices", ["assettag"], name: "index_otherdevices_on_assettag", unique: true, using: :btree
 
   create_table "simcards", force: :cascade do |t|
     t.string   "project"
