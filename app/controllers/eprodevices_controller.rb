@@ -5,6 +5,14 @@ class EprodevicesController < ApplicationController
   # GET /eprodevices.json
   def index
     @eprodevices = Eprodevice.all
+    respond_to do |format|
+       format.html
+       format.json {render :json => @eprodevices}
+       format.xml  {render :xml => @eprodevices}
+       format.csv do
+         send_data render_to_string, filename: "eprodevices.csv", type: :csv
+       end
+    end
   end
 
   # GET /eprodevices/1

@@ -5,6 +5,14 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     @items = Item.all
+    respond_to do |format|
+       format.html
+       format.json {render :json => @items}
+       format.xml  {render :xml => @items}
+       format.csv do
+         send_data render_to_string, filename: "items.csv", type: :csv
+       end
+    end
   end
 
   # GET /items/1

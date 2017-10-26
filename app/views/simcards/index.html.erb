@@ -38,6 +38,7 @@
         <% end %>
       </tbody>
     </table>
+    <p><%= link_to "Export CSV", simcards_path(format: :csv), class: "btn btn-primary" %></p>
   </div>
   
 <% content_for(:extra_scripts) do %>

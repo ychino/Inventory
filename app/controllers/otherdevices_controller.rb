@@ -5,6 +5,14 @@ class OtherdevicesController < ApplicationController
   # GET /otherdevices.json
   def index
     @otherdevices = Otherdevice.all
+     respond_to do |format|
+       format.html
+       format.json {render :json => @otherdevices}
+       format.xml  {render :xml => @otherdevices}
+       format.csv do
+         send_data render_to_string, filename: "otherdevices.csv", type: :csv
+       end
+    end
   end
 
   # GET /otherdevices/1
