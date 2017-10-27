@@ -4,7 +4,7 @@ class DevicesController < ApplicationController
   # GET /sensors
   # GET /sensors.json
   def index
-    @devices = Device.all.order(status: :asc, builtby: :desc)
+    @devices = Device.all.order(status: :asc, builtby: :asc)
     respond_to do |format|
        format.html
        format.json {render :json => @devices}
