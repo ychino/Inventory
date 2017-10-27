@@ -4,7 +4,7 @@ class OtherdevicesController < ApplicationController
   # GET /otherdevices
   # GET /otherdevices.json
   def index
-    @otherdevices = Otherdevice.all
+    @otherdevices = Otherdevice.all.order('status ASC')
      respond_to do |format|
        format.html
        format.json {render :json => @otherdevices}

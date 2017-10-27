@@ -4,7 +4,7 @@ class EprodevicesController < ApplicationController
   # GET /eprodevices
   # GET /eprodevices.json
   def index
-    @eprodevices = Eprodevice.all
+    @eprodevices = Eprodevice.all.order('status ASC')
     respond_to do |format|
        format.html
        format.json {render :json => @eprodevices}
