@@ -69,6 +69,15 @@ class EprodevicesController < ApplicationController
     end
   end
 
+  def import
+    if params[:file].blank?
+      redirect_to eprodevices_url, notice: 'Please select a file!'
+    else
+      Eprodevice.import(params[:file])
+      redirect_to eprodevices_url, notice: 'Devices have been imported!'
+    end
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_eprodevice

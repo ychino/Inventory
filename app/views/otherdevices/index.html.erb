@@ -47,12 +47,20 @@
       </tbody>
     </table>
      <p><%= link_to "Export CSV", otherdevices_path(format: :csv), class: "btn btn-primary" %></p>
+     <%= form_tag({controller: "otherdevices", action: "import", method: "post"}, {multipart: true}) do %>
+      <p><%= file_field_tag :file %></p>
+      <%= submit_tag "Import CSV", class: "btn btn-primary" %>
+    <% end %>
   </div>
   
 <% content_for(:extra_scripts) do %>
-  <script type="text/javascript">
+   <script type="text/javascript">
     $(document).ready(function() {
-      $('#otherdevices').DataTable({ responsive: true });
+      $('#otherdevices').DataTable({ 
+        responsive: true,
+        "aLengthMenu": [[25, 50, 75, -1], [25, 50, 75, "All"]],
+        "iDisplayLength": 25
+      });
     });
   </script>
 <% end %>

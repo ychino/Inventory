@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   root to: 'dashboard#index'
   resources :simcards
-  resources :otherdevices
-  resources :eprodevices
+  resources :otherdevices do
+    collection { post :import }
+  end
+  resources :eprodevices do
+    collection { post :import }
+  end
   resources :items
   resources :devices do
     collection { post :import }
