@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171026053428) do
+ActiveRecord::Schema.define(version: 20171031021505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "devicehis", force: :cascade do |t|
+    t.integer  "device_id"
+    t.string   "service"
+    t.string   "project"
+    t.integer  "siteid"
+    t.string   "requestedby"
+    t.date     "buildby"
+    t.text     "notes"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "devices", force: :cascade do |t|
     t.string   "name"
@@ -43,7 +55,7 @@ ActiveRecord::Schema.define(version: 20171026053428) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "status"
-    t.integer  "siteid"
+    t.string   "siteid"
   end
 
   add_index "eprodevices", ["assettag"], name: "index_eprodevices_on_assettag", unique: true, using: :btree

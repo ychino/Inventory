@@ -3,22 +3,65 @@
 
 <div class="row"><h1>Other Devices</h1></div>
 <div class="panel panel-default">
-    <div class="panel-heading">Dashboard</div>
+    <div class="panel-heading">Details</div>
   <div class="panel-body">
     <% content_for(:page_header) do %>
       <%= "Other Device detail" %>
     <% end %>
     <% content_for :panel_heading do %><%= @otherdevice.assettag %><% end %>
     
+     <p>
+      <strong>Service:</strong>
+      <%= @otherdevice.service %>
+    </p>
     <p>
-      <strong>Name:</strong>
+      <strong>Project:</strong>
+      <%= @otherdevice.project %>
+    </p>
+    <p>
+      <strong>Asset Tag:</strong>
       <%= @otherdevice.assettag %>
     </p>
-    
     <p>
-      <strong>Kind:</strong>
+      <strong>Model:</strong>
       <%= @otherdevice.model %>
     </p>
+    <p>
+      <strong>Sponsor Site ID:</strong>
+      <%= @otherdevice.siteid %>
+    </p>
+     <p>
+      <strong>Requested By:</strong>
+      <%= @otherdevice.requestedby %>
+    </p>
+    <p>
+      <strong>Build Date By:</strong>
+      <%= @otherdevice.buildby %>
+    </p>
+     <p>
+      <strong>Status:</strong>
+      <% if @otherdevice.status == "Build Requested" %>
+        <%= link_to @otherdevice.status, '#', class: "label label-warning" %>
+      <% end %>
+        <% if @otherdevice.status == "In Field" %>
+      <%= link_to @otherdevice.status, '#', class: 'label label-success' %>
+        <% end %>
+      <% if @otherdevice.status == "Stocked" %>
+        <%= link_to @otherdevice.status, '#', class: 'label label-primary' %>
+      <% end %>
+      <% if @otherdevice.status == "Repair Needed" %>
+        <%= link_to @otherdevice.status, '#', class: 'label label-danger' %>
+      <% end %>
+     </p>
+    <p>
+      <strong>Last Updated at:</strong>
+      <%= @otherdevice.updated_at %>
+    </p>
+    <p>
+      <strong>Notes:</strong>
+      <%= @otherdevice.notes %>
+    </p>
+    </br>
     
 <%= link_to 'Edit', edit_otherdevice_path(@otherdevice), class: 'btn btn-primary' %>
 <%= link_to 'Destroy', @otherdevice, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>

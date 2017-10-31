@@ -3,7 +3,7 @@
 
 <div class="row"><h1>Epro Devices</h1></div>
 <div class="panel panel-default">
-    <div class="panel-heading">Dashboard</div>
+    <div class="panel-heading">Details</div>
   <div class="panel-body">
     <% content_for(:page_header) do %>
       <%= "ePRO Device detail" %>
@@ -11,14 +11,57 @@
     <% content_for :panel_heading do %><%= @eprodevice.assettag %><% end %>
     
     <p>
-      <strong>Name:</strong>
+      <strong>Service:</strong>
+      <%= @eprodevice.service %>
+    </p>
+    <p>
+      <strong>Project:</strong>
+      <%= @eprodevice.project %>
+    </p>
+    <p>
+      <strong>Asset Tag:</strong>
       <%= @eprodevice.assettag %>
     </p>
-    
     <p>
-      <strong>Kind:</strong>
+      <strong>Model:</strong>
       <%= @eprodevice.model %>
     </p>
+    <p>
+      <strong>Sponsor Site ID:</strong>
+      <%= @eprodevice.siteid %>
+    </p>
+     <p>
+      <strong>Requested By:</strong>
+      <%= @eprodevice.requestedby %>
+    </p>
+    <p>
+      <strong>Build Date By:</strong>
+      <%= @eprodevice.buildby %>
+    </p>
+     <p>
+      <strong>Status:</strong>
+      <% if @eprodevice.status == "Build Requested" %>
+        <%= link_to @eprodevice.status, '#', class: "label label-warning" %>
+      <% end %>
+        <% if @eprodevice.status == "In Field" %>
+      <%= link_to @eprodevice.status, '#', class: 'label label-success' %>
+        <% end %>
+      <% if @eprodevice.status == "Stocked" %>
+        <%= link_to @eprodevice.status, '#', class: 'label label-primary' %>
+      <% end %>
+      <% if @eprodevice.status == "Repair Needed" %>
+        <%= link_to @eprodevice.status, '#', class: 'label label-danger' %>
+      <% end %>
+     </p>
+    <p>
+      <strong>Last Updated at:</strong>
+      <%= @eprodevice.updated_at %>
+    </p>
+    <p>
+      <strong>Notes:</strong>
+      <%= @eprodevice.notes %>
+    </p>
+    </br>
     
 <%= link_to 'Edit', edit_eprodevice_path(@eprodevice), class: 'btn btn-primary' %>
 <%= link_to 'Destroy', @eprodevice, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
