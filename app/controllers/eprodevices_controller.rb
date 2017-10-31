@@ -4,7 +4,7 @@ class EprodevicesController < ApplicationController
   # GET /eprodevices
   # GET /eprodevices.json
   def index
-    @eprodevices = Eprodevice.all.order(status: :asc, buildby: :asc)
+    @eprodevices = Eprodevice.all.order(status: :asc, buildby: :asc, assettag: :asc)
     respond_to do |format|
        format.html
        format.json {render :json => @eprodevices}
@@ -36,7 +36,7 @@ class EprodevicesController < ApplicationController
 
     respond_to do |format|
       if @eprodevice.save
-        format.html { redirect_to @eprodevice, notice: 'Eprodevice was successfully created.' }
+        format.html { redirect_to eprodevices_url, notice: 'Eprodevice was successfully created.' }
         format.json { render :show, status: :created, location: @eprodevice }
       else
         format.html { render :new }
@@ -50,7 +50,7 @@ class EprodevicesController < ApplicationController
   def update
     respond_to do |format|
       if @eprodevice.update(eprodevice_params)
-        format.html { redirect_to @eprodevice, notice: 'Eprodevice was successfully updated.' }
+        format.html { redirect_to eprodevices_url, notice: 'Eprodevice was successfully updated.' }
         format.json { render :show, status: :ok, location: @eprodevice }
       else
         format.html { render :edit }

@@ -4,7 +4,7 @@ class DevicesController < ApplicationController
   # GET /sensors
   # GET /sensors.json
   def index
-    @devices = Device.all.order(status: :asc, builtby: :asc)
+    @devices = Device.all.order(status: :asc, builtby: :asc, name: :asc)
     respond_to do |format|
        format.html
        format.json {render :json => @devices}
@@ -36,11 +36,11 @@ class DevicesController < ApplicationController
 
     respond_to do |format|
       if @device.save
-        format.html { redirect_to @device, notice: 'Device was successfully created.' }
+        format.html { redirect_to devices_url, notice: 'Device was successfully created.' }
         format.json { render :show, status: :created, location: @device }
       else
         format.html { render :new }
-        format.json { render json: @device.errors, status: :unprocessable_entity }
+        format.json { render json: devices_url.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -50,7 +50,7 @@ class DevicesController < ApplicationController
   def update
     respond_to do |format|
       if @device.update(device_params)
-        format.html { redirect_to @device, notice: 'Device was successfully updated.' }
+        format.html { redirect_to devices_url, notice: 'Device was successfully updated.' }
         format.json { render :show, status: :ok, location: @device }
       else
         format.html { render :edit }

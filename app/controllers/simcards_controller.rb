@@ -36,7 +36,7 @@ class SimcardsController < ApplicationController
 
     respond_to do |format|
       if @simcard.save
-        format.html { redirect_to @simcard, notice: 'Simcard was successfully created.' }
+        format.html { redirect_to simcards_url, notice: 'Simcard was successfully created.' }
         format.json { render :show, status: :created, location: @simcard }
       else
         format.html { render :new }
@@ -50,7 +50,7 @@ class SimcardsController < ApplicationController
   def update
     respond_to do |format|
       if @simcard.update(simcard_params)
-        format.html { redirect_to @simcard, notice: 'Simcard was successfully updated.' }
+        format.html { redirect_to simcards_url, notice: 'Simcard was successfully updated.' }
         format.json { render :show, status: :ok, location: @simcard }
       else
         format.html { render :edit }

@@ -4,7 +4,7 @@ class OtherdevicesController < ApplicationController
   # GET /otherdevices
   # GET /otherdevices.json
   def index
-    @otherdevices = Otherdevice.all.order(status: :asc, buildby: :asc)
+    @otherdevices = Otherdevice.all.order(status: :asc, buildby: :asc, assettag: :asc)
      respond_to do |format|
        format.html
        format.json {render :json => @otherdevices}
@@ -36,7 +36,7 @@ class OtherdevicesController < ApplicationController
 
     respond_to do |format|
       if @otherdevice.save
-        format.html { redirect_to @otherdevice, notice: 'Otherdevice was successfully created.' }
+        format.html { redirect_to otherdevices_url, notice: 'Otherdevice was successfully created.' }
         format.json { render :show, status: :created, location: @otherdevice }
       else
         format.html { render :new }
@@ -50,7 +50,7 @@ class OtherdevicesController < ApplicationController
   def update
     respond_to do |format|
       if @otherdevice.update(otherdevice_params)
-        format.html { redirect_to @otherdevice, notice: 'Otherdevice was successfully updated.' }
+        format.html { redirect_to otherdevices_url, notice: 'Otherdevice was successfully updated.' }
         format.json { render :show, status: :ok, location: @otherdevice }
       else
         format.html { render :edit }
