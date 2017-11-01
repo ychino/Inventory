@@ -3,23 +3,73 @@
     <div class="panel-heading">List of ePRO Devices <%= link_to 'Add New ePRO Device', new_eprodevice_path(), class: 'btn btn-default btn-sm' %></div>
   <div class="panel-body">
     <table id="eprodevices" class="table-striped table-bordered table table-hover" cellspacing="0" width="100%">
+      <div class="row">
+     
+      <%= search_form_for @q do |f| %>
+      <div class="col-md-2">
+      <%= f.label :project_cont, "Project" %>
+      <%= f.search_field :project_cont, class: 'form-control' %>
+      <br />
+      </div>
+      
+      <div class="col-md-2">
+      <%= f.label :assettag_cont, "Asset Tag" %>
+      <%= f.search_field :assettag_cont, class: 'form-control'%>
+      <br />
+      </div>
+      
+      <div class="col-md-2">
+      <%= f.label :model_start, "Model" %>
+      <%= f.search_field :model_start, class: 'form-control' %>
+      <br />
+      </div>
+      
+      <div class="col-md-2">
+      <%= f.label :siteid_eq, "Site ID" %>
+      <%= f.search_field :siteid_eq, class: 'form-control' %>
+      <br />
+      </div>
+      
+      <div class="col-md-2">
+      <%= f.label :requestedby_start, "Requested by" %>
+      <%= f.search_field :requestedby_start, class: 'form-control' %>
+      <br />
+      </div>
+      
+      <div class="col-md-2">
+      <%= f.label :status_start, "Status" %>
+      <%= f.search_field :status_start, class: 'form-control' %>
+      <br />
+      </div>
+    
+      </div>
+    
+      <div class="text-right">
+      Showing <b><%= @q.result.count%></b> out of Total <%= @devicetotal.count %>&nbsp;
+      <%= f.submit "Search", :class => 'btn btn-sm btn-default' %>
+      <% end %>
+      </div>
+      </br>
+      
       <thead>
         <tr>
-         <th>Service</th>
-         <th>Project</th>
-         <th>Asset Tag</th>
-         <th>Model</th>
-         <th>Site ID</th>
-         <th>Requested By</th>
-         <th>Build Date</th>
-         <th>Last Updated</th>
-         <th>Status</th>
+          <th></th>
+          <th><%= sort_link(@q, :service, 'Service') %></th>
+          <th><%= sort_link(@q, :project, 'Project') %></th>
+          <th><%= sort_link(@q, :assettag, 'Asset Tag') %></th>
+          <th><%= sort_link(@q, :model, 'Model') %></th>
+          <th><%= sort_link(@q, :siteid, 'Site ID') %></th>
+          <th><%= sort_link(@q, :requestedby, 'Requested By') %></th>
+          <th><%= sort_link(@q, :buildby, 'Built Date') %></th>
+          <th><%= sort_link(@q, :updated_at, 'Last Updated') %></th>
+          <th><%= sort_link(@q, :status, 'Status') %></th>
         </tr>
       </thead>
     
       <tbody>
         <% @eprodevices.each do |eprodevice| %>
           <tr>
+            <td><b><%= @count %></b></td>
             <td><%= eprodevice.service %></td>
             <td><%= eprodevice.project %></td>
             <td><%= link_to eprodevice.assettag, eprodevice %></td>
@@ -43,6 +93,7 @@
               <% end %>
             </td>
           </tr>
+          <% @count += 1 %>
         <% end %>
       </tbody>
     </table>
@@ -53,7 +104,9 @@
     <% end %>
   </div>
   
-<% content_for(:extra_scripts) do %>
+<!-- 
+  
+<#% content_for(:extra_scripts) do %>
   <script type="text/javascript">
     $(document).ready(function() {
       $('#eprodevices').DataTable({ 
@@ -63,4 +116,6 @@
       });
     });
   </script>
-<% end %>
+<#% end %>
+
+-->

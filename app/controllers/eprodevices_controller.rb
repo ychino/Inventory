@@ -4,7 +4,10 @@ class EprodevicesController < ApplicationController
   # GET /eprodevices
   # GET /eprodevices.json
   def index
-    @eprodevices = Eprodevice.all.order(status: :asc, buildby: :asc, project: :asc, assettag: :asc)
+    @q = Eprodevice.search(params[:q])
+    @eprodevices = @q.result(distinct: true).order(status: :asc, buildby: :asc, project: :asc, assettag: :asc)
+    @devicetotal = Eprodevice.all
+    @count = 1
     respond_to do |format|
        format.html
        format.json {render :json => @eprodevices}

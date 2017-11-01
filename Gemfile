@@ -16,6 +16,7 @@ gem 'thin'
 gem 'seed_dump'
 gem 'bootstrap_sb_admin_base_v2'
 gem "chartkick"
+gem "ransack"
 
 group :development, :test do
   gem 'byebug'

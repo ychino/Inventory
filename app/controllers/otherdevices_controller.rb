@@ -4,7 +4,10 @@ class OtherdevicesController < ApplicationController
   # GET /otherdevices
   # GET /otherdevices.json
   def index
-    @otherdevices = Otherdevice.all.order(status: :asc, buildby: :asc, project: :asc, assettag: :asc)
+    @q = Otherdevice.search(params[:q])
+    @otherdevices = @q.result(distinct: true).order(status: :asc, buildby: :asc, project: :asc, assettag: :asc)
+    @devicetotal = Otherdevice.all
+    @count = 1
      respond_to do |format|
        format.html
        format.json {render :json => @otherdevices}
