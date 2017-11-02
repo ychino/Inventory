@@ -46,7 +46,7 @@
         <% if @eprodevice.status == "In Field" %>
       <%= link_to @eprodevice.status, '#', class: 'label label-success' %>
         <% end %>
-      <% if @eprodevice.status == "Stocked" %>
+      <% if @eprodevice.status == "In Stock" %>
         <%= link_to @eprodevice.status, '#', class: 'label label-primary' %>
       <% end %>
       <% if @eprodevice.status == "Repair Needed" %>

@@ -5,7 +5,7 @@ class Device < ActiveRecord::Base
   
   KINDS = [ 'RS' ]
   MODELS = [ 'Surface Pro 3', 'Surface Pro 4', 'Dell Latitude E6440']
-  STATUSES = [ 'Build Requested', 'In Field', 'Stocked', 'Repair Needed']
+  STATUSES = [ 'Build Requested', 'In Field', 'In Stock', 'Repair Needed']
   
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
