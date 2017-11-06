@@ -4,7 +4,7 @@ class SimcardsController < ApplicationController
   # GET /simcards
   # GET /simcards.json
   def index
-    @simcards = Simcard.all
+    @simcards = Simcard.all.order(status: :asc, project: :asc, carrier: :asc, startdate: :asc)
     respond_to do |format|
        format.html
        format.json {render :json => @otherdevices}
