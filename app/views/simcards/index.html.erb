@@ -1,6 +1,6 @@
 <div class="row"><h1>SIM Cards</h1>
 <div class="panel panel-default">
-    <div class="panel-heading">Dashboard <%= link_to 'Add New SIM card', new_simcard_path(), class: 'btn btn-default btn-sm' %>   <b>Monthly Fee Total: <%= Simcard.sum(:monthlyfee)%> JPY</b></div>
+    <div class="panel-heading">Dashboard <%= link_to 'Add New SIM card', new_simcard_path(), class: 'btn btn-default btn-sm' %> &nbsp;&nbsp; <b>Monthly Fee Total: <%= Simcard.sum(:monthlyfee)%> JPY</b></div>
   <div class="panel-body">
     <table id="simcards" class="table-striped table-bordered table table-hover" cellspacing="0" width="100%">
       <thead>
