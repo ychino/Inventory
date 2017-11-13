@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171102085233) do
+ActiveRecord::Schema.define(version: 20171113045510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20171102085233) do
     t.datetime "updated_at",  null: false
     t.string   "status"
     t.string   "siteid"
+    t.text     "imei",        null: false
   end
 
   add_index "eprodevices", ["assettag"], name: "index_eprodevices_on_assettag", unique: true, using: :btree

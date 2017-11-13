@@ -13,14 +13,14 @@ class Eprodevice < ActiveRecord::Base
       obj = new
       obj.attributes = row.to_hash.slice(*updatable_attributes)
       
-      unless Eprodevice.exists?(assettag: row["assettag"])
+      unless Eprodevice.exists?(assettag: row["imei"])
         obj.save!
       end
     end
   end
   
   def self.updatable_attributes
-    ["service", "project", "assettag", "model", "siteid", "requestedby", "buildby", "notes", "created_at", "updated_at", "status"]
+    ["service", "project", "imei", "assettag", "model", "siteid", "requestedby", "buildby", "notes", "created_at", "updated_at", "status"]
   end
   
 end

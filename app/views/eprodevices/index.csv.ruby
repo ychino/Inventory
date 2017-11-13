@@ -1,12 +1,13 @@
 require 'csv'
 
 CSV.generate do |csv|
-  csv_column_names = %w(Service Project AsseTag Model SiteID RequestedBy BuildDateBy Notes CreatedAt UpdateAt Status)
+  csv_column_names = %w(Service Project IMEI AsseTag Model SiteID RequestedBy BuildDateBy Notes CreatedAt UpdateAt Status)
   csv << csv_column_names
   @eprodevices.each do |eprodevice|
     csv_column_values = [
       eprodevice.service,
       eprodevice.project,
+      eprodevice.imei,
       eprodevice.assettag,
       eprodevice.model,
       eprodevice.siteid,

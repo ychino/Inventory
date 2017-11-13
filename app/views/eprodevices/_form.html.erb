@@ -17,6 +17,10 @@
     <%= f.select :service, Eprodevice::KINDS, { prompt: 'Select a service' }, { required: true, class: 'form-control' } %>
   </div>
   <div class="form-group">
+    <%= f.label :IMEI %><br>
+    <%= f.text_field :imei, class: 'form-control', placeholder: 'Enter IMEI...', required: true %>
+  </div>
+  <div class="form-group">
     <%= f.label :AssetTag %><br>
     <%= f.text_field :assettag, class: 'form-control', placeholder: 'Enter device name...', required: true %>
   </div>
